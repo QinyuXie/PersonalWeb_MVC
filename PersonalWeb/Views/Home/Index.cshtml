@@ -1,0 +1,65 @@
+﻿@model PersonalWeb.Models.ViewModels.ResumeViewModel;
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    <a asp-action="Index">Back to user info page</a>
+</div>
+@*
+
+    <table>
+        @foreach (var education in Model.EduDetails)
+        {
+        <tr>
+            <td>@education.SchoolName</td>
+            <td>@education.Degree</td>
+            <td>@education.Major</td>
+            <td>@education.ReleventCourses</td>
+            <td>@education.FromYear</td>
+            <td>@education.FromMonth</td>
+            <td>@education.FromDay</td>
+        </tr>
+        }
+    </table>
+
+    <table>
+        @foreach (var work in Model.WorkDetails)
+        {
+            <tr>
+                <td>@work.CompanyName</td>
+                <td>@work.Location</td>
+                <td>@work.Position</td>
+                <td>@work.Responsibility</td>
+                <td>@work.FromYear</td>
+                <td>@work.FromMonth</td>
+                <td>@work.FromDay</td>
+            </tr>
+        }
+    </table>
+
+
+    <table>
+        @foreach (var proj in Model.ProjectDetails)
+        {
+            <tr>
+                <td>@proj.ProjectName</td>
+                <td>@proj.Location</td>
+                <td>@proj.Position</td>
+                <td>@proj.Description</td>
+                <td>@proj.FromYear</td>
+                <td>@proj.FromMonth</td>
+                <td>@proj.FromDay</td>
+            </tr>
+        }
+    </table>
+
+*@
+

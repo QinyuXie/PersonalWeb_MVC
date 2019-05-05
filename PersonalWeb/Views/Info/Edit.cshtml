@@ -1,0 +1,73 @@
+﻿@using PersonalWeb.Models.Entities
+@model PersonalWeb.Models.Entities.UserInfo
+
+@{
+    ViewData["Title"] = "EditInfo Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Edit Info</h2>
+</div>
+
+<h3>Info </h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All"></div>
+            <table class="table">
+                <tr>
+                    <td><label asp-for="UserFirstName"></label></td>
+                    <td><input asp-for="UserFirstName" /></td>
+                    <td><span asp-validation-for="UserFirstName"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="UserLastName"></label></td>
+                    <td><input asp-for="UserLastName" /></td>
+                    <td><span asp-validation-for="UserLastName"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Gender"></label></td>
+                    <td>
+                        <select asp-for="Gender"
+                                asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Age"></label></td>
+                    <td><input asp-for="Age" /></td>
+
+                </tr>
+                <tr>
+                    <td><label asp-for="EmailAddress"></label></td>
+                    <td><input asp-for="EmailAddress" /></td>
+                    <td><span asp-validation-for="EmailAddress"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="PhoneNumber">Number</label></td>
+                    <td><input asp-for="PhoneNumber" /></td>
+                    <td><span asp-validation-for="PhoneNumber"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Location">Location</label></td>
+                    <td><input asp-for="Location" /></td>
+                    <td><span asp-validation-for="Location"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Address">Address</label></td>
+                    <td><input asp-for="Address" /></td>
+                    <td><span asp-validation-for="Address"></span></td>
+                </tr>
+            </table>
+            <input type="submit" value="Save" />
+        </form>
+        <div>
+            <a asp-action="Index">Back to user info page</a>
+        </div>
+
+    </div>
+
+
+
+</div>
