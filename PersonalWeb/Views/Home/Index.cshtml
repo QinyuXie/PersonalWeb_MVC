@@ -154,8 +154,13 @@
                     @foreach (var education in Model.eduDetails)
                     {
                         <tr>
-                            <h3 id="school-name">@education.SchoolName</h3>
-
+                            <td>
+                                 <h3 id="school-name">@education.SchoolName</h3>
+                            </td>
+                            <td>
+                                <a asp-action="Edit" >Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@education.EduId">Delete</a>
+                            </td>
                             <p><span class="dim">@education.Degree @education.Major</span></p>
 
                             <p><span class="dim">@education.ReleventCourses</span></p>
