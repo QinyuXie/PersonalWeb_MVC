@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using PersonalWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using PersonalWeb.Services;
@@ -63,6 +64,13 @@ namespace PersonalWeb
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            //app.UseStaticFiles(new StaticFileOptions()
+            //{
+            //    FileProvider = new PhysicalFileProvider(@"/StaticFiles"),
+            //    RequestPath = new PathString("/StaticFiles")
+            //});
+
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>

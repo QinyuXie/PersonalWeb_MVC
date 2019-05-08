@@ -1,65 +1,293 @@
-﻿@model PersonalWeb.Models.ViewModels.ResumeViewModel;
+﻿
+@model PersonalWeb.Models.ViewModels.ResumeViewModel;
 
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<link rel="stylesheet" href="~/css/IndexCSS.css" />
 
-<div>
-    <a asp-action="Index">Back to user info page</a>
-</div>
-@*
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
 
-    <table>
-        @foreach (var education in Model.EduDetails)
-        {
-        <tr>
-            <td>@education.SchoolName</td>
-            <td>@education.Degree</td>
-            <td>@education.Major</td>
-            <td>@education.ReleventCourses</td>
-            <td>@education.FromYear</td>
-            <td>@education.FromMonth</td>
-            <td>@education.FromDay</td>
-        </tr>
-        }
-    </table>
-
-    <table>
-        @foreach (var work in Model.WorkDetails)
-        {
-            <tr>
-                <td>@work.CompanyName</td>
-                <td>@work.Location</td>
-                <td>@work.Position</td>
-                <td>@work.Responsibility</td>
-                <td>@work.FromYear</td>
-                <td>@work.FromMonth</td>
-                <td>@work.FromDay</td>
-            </tr>
-        }
-    </table>
+    <div>
+        <a asp-action="Index">Back to user info page</a>
+    </div>*@
 
 
-    <table>
-        @foreach (var proj in Model.ProjectDetails)
-        {
-            <tr>
-                <td>@proj.ProjectName</td>
-                <td>@proj.Location</td>
-                <td>@proj.Position</td>
-                <td>@proj.Description</td>
-                <td>@proj.FromYear</td>
-                <td>@proj.FromMonth</td>
-                <td>@proj.FromDay</td>
-            </tr>
-        }
-    </table>
+<section id="about" class="home-section">
+    <div class="container">
 
-*@
+        <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <div class="col-left">
+                <div id="profile">
 
+
+                    @*<div class="portrait" itemprop="image"
+                             style="background-image: url('~/~/StaticFiles/por.JPG');">
+                        </div>*@
+
+
+                    <div class="portrait-title">
+                        <h2 itemprop="name">@Model.user.UserFirstName @Model.user.UserLastName</h2>
+                        <h3 itemprop="position">Syracuse University Student</h3>
+
+                        @*<h3 itemprop="worksFor">
+                                <a href="https://onevcat.com" target="_blank">
+                                    OneV&#39;s Den (@onevcat)
+                                </a>
+                            </h3>*@
+
+                    </div>
+
+                    <ul class="social-icon" aria-hidden="true">
+
+
+                        <li>
+                            <a href="mailto:onev@onevcat.com" target="_blank">
+                                <i class="fa fa-envelope big-icon"></i>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="//instagram.com/thisalex96" target="_blank">
+                                <i class="fa fa-instagram big-icon"></i>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="//weibo.com/onevcat" target="_blank">
+                                <i class="fa fa-weibo big-icon"></i>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="//github.com/onevcat" target="_blank">
+                                <i class="fa fa-github big-icon"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="col-right" itemprop="description">
+
+
+
+                <h1 id="introduction">Introduction</h1>
+
+                <p>Wei Wang is a professional developer who focuses on iOS now. He has strong knowledge of Swift, Objective-C and network programming. With these skills, he created quite a few widely used applications and frameworks. He also leads the <a href="https://objccn.io" target="_blank">ObjCCN group</a>, which is dedicated to introducing advanced iOS practice and technology to China.</p>
+
+                <p>As a proud father of two amazing kids, Wei Wang also loves traveling, reading and taking photos. He is always willing to try new things, and keeping to learn from them.</p>
+
+                <p>Now, he works for <a href="https://line.me/" target="_blank">LINE Corporation</a> as a senior software engineer.</p>
+
+
+                <div class="row">
+
+
+                    <div class="col-sm-5">
+                        <h3>Job Interests</h3>
+                        <ul class="ul-interests">
+
+                            <li>Mobile Development</li>
+
+                            <li>Swift Programming</li>
+
+                            <li>Open Source Software</li>
+
+                        </ul>
+                    </div>
+
+
+
+                    <div class="col-sm-7">
+                        <h3>Education</h3>
+                        <ul class="ul-edu fa-ul">
+
+                            <li>
+                                <i class="fa-li fa fa-graduation-cap"></i>
+                                <div class="description">
+                                    <p class="course">MSc in Microelectronics Engineering, 2012</p>
+                                    <p class="institution">Tsinghua University, China</p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <i class="fa-li fa fa-graduation-cap"></i>
+                                <div class="description">
+                                    <p class="course">BSc in Electrical Engineering, 2009</p>
+                                    <p class="institution">Tsinghua University, China</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@if (Model.eduDetails != null)
+{
+    <section id="education" class="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-left" section-heading">
+                    <h1>Education</h1>
+                </div>
+
+                <div class="col-right">
+
+                    @foreach (var education in Model.eduDetails)
+                    {
+                        <tr>
+                            <h3 id="school-name">@education.SchoolName</h3>
+
+                            <p><span class="dim">@education.Degree @education.Major</span></p>
+
+                            <p><span class="dim">@education.ReleventCourses</span></p>
+                            <td>@education.FromYear</td>
+                            <td>@education.FromMonth</td>
+                            <td>@education.FromDay</td>
+                        </tr>
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+}
+
+
+@if (Model.workDetails != null)
+{
+    <section id="experience" class="home-section">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12 col-md-4 section-heading">
+                    <h1>Professional Experience</h1>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+
+                    @foreach (var work in Model.workDetails)
+                    {
+
+                        <h3 id="school-name">@work.FromMonth @work.FromYear - @work.ToMonth @work.ToYear</h3>
+
+                        <p>@work.Position, @work.Location</p>
+
+                        <ul>
+                            @{
+                                string[] description = (@work.Responsibility).Split(';');
+                            }
+
+                            @foreach (string @des in description)
+                            {
+                                <li>@des</li>
+                            }
+                        </ul>
+
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+}
+
+
+@if (Model.projectDetails != null)
+{
+    <section id="experience" class="home-section">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12 col-md-4 section-heading">
+                    <h1>Professional Experience</h1>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+
+                    @foreach (var work in Model.workDetails)
+                    {
+
+                        <h3 id="school-name">@work.FromMonth @work.FromYear - @work.ToMonth @work.ToYear</h3>
+
+                        <p>@work.Position, @work.Location</p>
+
+                        <ul>
+                            @{
+                                string[] description = (@work.Responsibility).Split(';');
+                            }
+
+                            @foreach (string @des in description)
+                            {
+                                <li>@des</li>
+                            }
+                        </ul>
+
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+}
+
+<section id="contact" class="home-section">
+    <div class="container">
+
+
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-md-4 section-heading">
+                <h1>Contact</h1>
+
+            </div>
+            <div class="col-xs-12 col-md-8">
+
+                <ul class="fa-ul">
+
+                    <li>
+                        <i class="fa-li fa fa-envelope fa-2x" aria-hidden="true"></i>
+                        <span><a href="mailto:onev@onevcat.com">onev@onevcat.com</a></span>
+                    </li>
+
+                    <li>
+                        <i class="fa-li fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                        <span>JR Shinjuku Miraina Tower 23F, 4-1-6 Shinjuku, Shinjuku-ku, Tokyo, 160-0022, Japan</span>
+                    </li>
+
+                    <li>
+                        <i class="fa-li fa fa-clock-o fa-2x" aria-hidden="true"></i>
+                        <span>Please send an email for appointment</span>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</section>

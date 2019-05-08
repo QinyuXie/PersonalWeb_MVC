@@ -16,15 +16,17 @@ namespace PersonalWeb.Controllers
     {
         //private ResumeViewModel _resume;
 
-        private readonly AppDbContext context_;
+        private readonly AppDbContext _context;
         private UserInfo userInfo_;
+
         public InfoController(AppDbContext context)
         {
-            context_ = context;
-            var users_ = context_.userInfos.ToList();
-            users_.Add(new UserInfo());
-            userInfo_ = users_[0];
+            _context = context;
+            //var users_ = context_.userInfos.ToList();
+            //users_.Add(new UserInfo());
+
         }
+
         //public InfoController(IResumeData mockResume)
         //{
         //    //_resume = mockResume.GetInstance();
@@ -33,13 +35,17 @@ namespace PersonalWeb.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-           //userInfo_.UserFirstName = "Qinyu";
+            //userInfo_.UserFirstName = "Qinyu";
             //userInfo_.UserLastName = "Xie";
             //userInfo_.Age = 23;
             //userInfo_.Address = "505";
             //userInfo_.EmailAddress = "qinyu@gmail.com";
             //userInfo_.PhoneNumber = "3514508661";
-            return View(userInfo_);
+
+            var model = new UserInfo();
+            //model = _context
+
+            return View(model);
         }
 
         [HttpGet]
@@ -59,8 +65,8 @@ namespace PersonalWeb.Controllers
                 userInfo_.Address = model.Address;
                 userInfo_.EmailAddress = model.EmailAddress;
                 userInfo_.PhoneNumber = model.PhoneNumber;
-                context_.userInfos.Update(userInfo_);
-                context_.SaveChanges();
+                //context_.userInfos.Update(userInfo_);
+                //context_.SaveChanges();
                 return RedirectToAction("Index");
             }
 

@@ -9,15 +9,5 @@ namespace PersonalWeb.Models.ViewModels
         public IEnumerable<Edu> eduDetails { get; set; }
         public IEnumerable<Work> workDetails { get; set; }
         public IEnumerable<Project> projectDetails { get; set; }
-        //public ResumeViewModel(UserInfo _user, 
-        //                        IEnumerable<Edu> _eduDetails,
-        //                        IEnumerable<Work> _workDetails,
-        //                        IEnumerable<Project> _projectDetails)
-        //{
-        //    user = _user;
-        //    eduDetails = _eduDetails;
-        //    workDetails = _workDetails;
-        //    projectDetails = _projectDetails;
-        //}
     }
 }
