@@ -6,15 +6,30 @@ let works = null;
 
 const proj_url = "api/proj";
 let projs = null;
+const comm_url = "api/comment";
+let comms = null;
+
+const file_url = "api/files";
+let files = null;
 
 $(document).ready(function() {
     getEduData();
       getWorkData();
-     getProjData();
+    getProjData();
+    getCommData();
+
 });
 
-
-
+function getFile() {
+  $.ajax({
+    type: "GET",
+    url: file_url + "/0",
+    cache: false,
+    success: function(data) {
+        files = data;
+    }
+  });
+}
 
 ///////////////////////////////
 //    edu api
@@ -68,12 +83,11 @@ function submitEduItem() {
     },
     success: function(result) {
       getEduData();
-    
+    location.reload();
     }
     });
     
     location.reload();
-      location.reload();
 }
 
 ///delete item
@@ -82,12 +96,12 @@ function deleteEduItem(id) {
     url: edu_url + "/" + id,
     type: "DELETE",
     success: function(result) {
-      getEduData();
+        getEduData();
+        location.reload();
     }
     });
 
-    location.reload();
-      location.reload();
+
 }
 
 
@@ -103,7 +117,8 @@ function getWorkData() {
     url: work_url,
     cache: false,
     success: function(data) {
-      works = data;
+        works = data;
+
     }
   });
 }
@@ -143,12 +158,10 @@ function submitWorkItem() {
     },
     success: function(result) {
       getWorkData();
-    
+    location.reload();
     }
     });
-    
-    location.reload();
-      location.reload();
+ location.reload();
 }
 
 ///delete item
@@ -157,12 +170,12 @@ function deleteWorkItem(id) {
     url: work_url + "/" + id,
     type: "DELETE",
     success: function(result) {
-      getWorkData();
+        getWorkData();
+        location.reload();
     }
     });
 
-    location.reload();
-      location.reload();
+
 }
 
 ///////////////////////////////
@@ -177,7 +190,8 @@ function getProjData() {
     url: proj_url,
     cache: false,
     success: function(data) {
-      projs = data;
+        projs = data;
+      
     }
   });
 }
@@ -217,11 +231,10 @@ function submitProjItem() {
     },
     success: function(result) {
       getProjData();
-    
+      location.reload();
     }
     });
     
-    location.reload();
     location.reload();
   
 }
@@ -232,13 +245,77 @@ function deleteProjItem(id) {
     url: proj_url + "/" + id,
     type: "DELETE",
     success: function(result) {
-      getProjData();
+        getProjData();
+          location.reload();
     }
     });
 
-    location.reload();
-      location.reload();
 }
 
 
+////////////
+// file api
 
+
+
+function getCommData() {
+  $.ajax({
+    type: "GET",
+    url: comm_url,
+    cache: false,
+    success: function(data) {
+        comms = data;
+     
+    }
+  });
+}
+
+//add new comment item
+function addCommItem() {
+       $("#add-commItem").css({ display: "block" });
+    $("#button-add-comm").css({display: "none"});
+}
+
+function closeAddCommInput() {
+    $("#add-commItem").css({ display: "none" });
+    $("#button-add-comm").css({display: "block"});
+}
+
+function submitCommItem() {
+
+    const item = {
+        FromUserNm : $("#add-userName").val(),
+        CommentContent : $("#add-comm").val(),
+       
+  };
+
+  $.ajax({
+    type: "POST",
+    accepts: "application/json",
+    url: comm_url,
+    contentType: "application/json",
+    data: JSON.stringify(item),
+    error: function(jqXHR, textStatus, errorThrown) {
+      alert("Something went wrong!");
+    },
+    success: function(result) {
+      getCommData();
+       location.reload();
+    }
+    });
+    location.reload();
+  
+}
+
+///delete item
+function deleteommCItem(id) {
+  $.ajax({
+    url: comm_url + "/" + id,
+    type: "DELETE",
+    success: function(result) {
+        getCommData();
+           location.reload();
+    }
+    });
+
+}

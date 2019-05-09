@@ -27,10 +27,15 @@ namespace PersonalWeb.Controllers
             model.eduDetails = _context.edus.ToList();
             model.workDetails = _context.works.ToList();
             model.projectDetails = _context.projects.ToList();
+            model.comments = _context.comments.ToList();
             return View(model);
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult Upload()
         {
             return View();
         }

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using PersonalWeb.Models.Entities;
 using PersonalWeb.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,6 +15,7 @@ namespace PersonalWeb.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class ProjController : Controller
     {
 

@@ -1,14 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 using PersonalWeb.Models.Entities;
 
 namespace PersonalWeb.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public DbSet<UserInfo> userInfos { get; set; }
         public DbSet<Edu> edus { get; set; }
         public DbSet<Work> works { get; set; }
         public DbSet<Project> projects { get; set; }
+        public DbSet<Comment> comments { get; set; }
 
         public AppDbContext() { }
 

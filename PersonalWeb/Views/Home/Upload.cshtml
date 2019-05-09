@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Upload";
+}
+<h1>@ViewData["Title"]</h1>
+
+<link rel="stylesheet" href="~/css/IndexCSS.css" />
+
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <div>
+            <p>Upload file:</p>
+            <input type="file" name="file" />
+            <input type="submit" value="upload" />
+        </div>
+    </div>
+</form>

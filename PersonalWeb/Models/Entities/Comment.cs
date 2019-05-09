@@ -9,6 +9,7 @@ namespace PersonalWeb.Models.Entities
         [Key]
         public int CommentId { get; set; }
         public string CommentContent { get; set; }
-        public int FromUserId { get; set; }
+
+        public string FromUserNm { get; set; }
     }
 }

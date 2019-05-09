@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
+
 @model PersonalWeb.Models.ViewModels.ResumeViewModel;
 
 
@@ -15,7 +16,7 @@
     }
 </style>
 <link rel="stylesheet" href="~/css/IndexCSS.css" />
-
+@*<script src="~/js/site.js"></script>*@
 
 <section id="about" class="home-section">
     <div class="container">
@@ -33,6 +34,17 @@
                         <h3 itemprop="position">Syracuse University Student</h3>
                     </div>
                 </div>
+
+                @*<div>
+                @if (User.IsInRole("Admin"))
+                {
+
+
+                <a href ="/html/Upload.html">Upload Resume</a>
+
+
+            }
+                </div>*@
             </div>
 
             <div class="col-right" itemprop="description">
@@ -78,29 +90,35 @@
 
                 @foreach (var education in Model.eduDetails)
                 {
-                    <tr>
-                        <td>
-                            <h2 id="school-name">@education.SchoolName</h2>
-                        </td>
+                <tr>
+                    <td>
+                        <h2 id="school-name">@education.SchoolName</h2>
+                    </td>
 
-                        <p><span>@education.Degree in @education.Major</span></p>
-
-
-                        <td>@education.FromYear</td> /
-                        <td>@education.FromMonth</td> ~
-                        <td>@education.ToYear</td> /
-                        <td>@education.ToMonth</td>
-                        <p><span>@education.ReleventCourses</span></p>
-
-                        <a id="deleteEduButton" href=""  style="color: #007bff" class="delete" onclick="deleteEduItem(@education.EduId)">Delete</a>
+                    <p><span>@education.Degree in @education.Major</span></p>
 
 
-                    </tr>
+                    <td>@education.FromYear</td> /
+                    <td>@education.FromMonth</td> ~
+                    <td>@education.ToYear</td> /
+                    <td>@education.ToMonth</td>
+                    <p><span>@education.ReleventCourses</span></p>
+
+                    @if (User.IsInRole("Admin"))
+                    {                
+                    <a id="deleteEduButton" href="" style="color: #007bff" class="delete" onclick="deleteEduItem(@education.EduId)">Delete</a>
+
+                    }
+
+
+                </tr>
                 }
 
                 <br>
 
-                <div id="add-eduItem" class="api-form">
+                @if (User.IsInRole("Admin"))
+                {
+                   <div id="add-eduItem" class="api-form">
                     <h3>Add</h3>
                     <form  method="POST" class="addEdu-form">
                         <input type="hidden" id="add-id">
@@ -132,6 +150,9 @@
                 <div>
                     <button id="button-add-edu" onclick="addEduItem()">Add Education</button>
                 </div>
+                }
+
+
 
             </div>
         </div>
@@ -153,32 +174,40 @@
             <div class="col-right">
 
                 @foreach (var work in Model.workDetails)
-            {
+    {
             <h2>@work.CompanyName</h2>
-            <h4 >@work.FromMonth @work.FromYear - @work.ToMonth @work.ToYear</h4>
+            <h4>@work.FromMonth @work.FromYear - @work.ToMonth @work.ToYear</h4>
 
             <p>@work.Position, @work.Location</p>
 
             <ul>
                 @{
-                string[] res = (@work.Responsibility).Split(';');
+        string[] res = (@work.Responsibility).Split(';');
                 }
 
                 @foreach (string @des in res)
-                    {
-                    <li>@des</li>
-                    }
+    {
+            <li>@des</li>
+}
             </ul>
 
-            <a id="deleteWorkButton" href=""  style="color: #007bff" class="delete" onclick="deleteWorkItem(@work.WorkId)">Delete</a>
+
+            @if (User.IsInRole("Admin"))
+{
+            <a id="deleteWorkButton" href="" style="color: #007bff" class="delete" onclick="deleteWorkItem(@work.WorkId)">Delete</a>
+
+}
+
 
             <br>
 }
+                            @if (User.IsInRole("Admin"))
+                            {
 
 
                 <div id="add-workItem" class="api-form">
                     <h3>Add</h3>
-                    <form  method="POST" class="addWork-form">
+                    <form method="POST" class="addWork-form">
 
                         Company Name<br>
                         <input type="text" id="add-wk-companyName"><br>
@@ -207,7 +236,7 @@
                 <div>
                     <button id="button-add-work" onclick="addWorkItem()">Add Work Experience</button>
                 </div>
-
+                }
             </div>
         </div>
 
@@ -245,13 +274,19 @@
             <li>@des</li>
 }
             </ul>
+
+            @if (User.IsInRole("Admin"))
+            {
+
             <a id="deleteProjButton" href="" style="color: #007bff" class="delete" onclick="deleteProjItem(@proj.ProjectId)">Delete</a>
+                }
 
-
-}
+            }
                 <br>
 
 
+                            @if (User.IsInRole("Admin"))
+                            {
 
                 <div id="add-projItem" class="api-form">
                     <h3>Add</h3>
@@ -284,13 +319,68 @@
                 <div>
                     <button id="button-add-proj" onclick="addProjItem()">Add Project</button>
                 </div>
-
+                }
             </div>
         </div>
 
     </div>
 </section>
 
+
+<section id="section-project" class="home-section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-4 section-heading">
+                <h1>Comment</h1>
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+
+
+                @foreach (var com in Model.comments)
+    {
+            <div style="background-color:rgb(247, 230, 230);">
+                 <p> @com.FromUserNm :    @com.CommentContent</p>
+                @if (User.IsInRole("Admin") | User.IsInRole("User"))
+    {
+
+            <a id="deleteCommButton" href="" style="color: #007bff" class="delete" onclick="deleteCommItem(@com.CommentId)">Delete</a>
+            <br>
+                }
+            </div>
+
+}
+
+
+
+                @if (User.IsInRole("User") | User.IsInRole("Admin"))
+    {
+
+            <div id="add-commItem" class="api-form">
+                <h3>Add Comments</h3>
+                <form action="javascript:void(0);" method="POST" class="addCom-form">
+
+                    User Name<br>
+                    <input type="text" id="add-userName"><br>
+                    Comment Content<br>
+                    <input type="text" id="add-comm"><br>
+
+                    <br><input type="submit" value="Add" onclick="submitCommItem()">
+                    <button onclick="closeAddCommInput()">Cancel</button>
+                </form>
+            </div>
+            <br>
+
+            <div>
+                <button id="button-add-comm" onclick="addCommItem()">Add Comments</button>
+            </div>
+}
+            </div>
+        </div>
+
+    </div>
+</section>
 
 <section id="section-contact" class="home-section">
     <div class="container">
@@ -307,17 +397,22 @@
 
                     <li>
                         <i class="fa-li fa fa-envelope fa-2x" aria-hidden="true"></i>
-                        <span><a href="mailto:onev@onevcat.com">onev@onevcat.com</a></span>
+                        Email : <span><a href="mailto:qinyu.syr@gmail.com">qinyu.syr@gmail.com</a></span>
+                    </li>
+
+                    <li>
+                        <i class="fa-li fa fa-envelope fa-2x" aria-hidden="true"></i>
+                        Phone : <span>+1 (315) 450-8661</span>
                     </li>
 
                     <li>
                         <i class="fa-li fa fa-map-marker fa-2x" aria-hidden="true"></i>
-                        <span>JR Shinjuku Miraina Tower 23F, 4-1-6 Shinjuku, Shinjuku-ku, Tokyo, 160-0022, Japan</span>
+                        Address : <span>505 Walnut Ave, Syracuse, New York State, 13210, the United State</span>
                     </li>
 
                     <li>
                         <i class="fa-li fa fa-clock-o fa-2x" aria-hidden="true"></i>
-                        <span>Please send an email for appointment</span>
+                        <span>Please send an email if you want further infomation</span>
                     </li>
 
                 </ul>

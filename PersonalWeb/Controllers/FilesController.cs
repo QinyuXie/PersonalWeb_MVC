@@ -26,11 +26,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using PersonalWeb.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace PersonalWeb.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class FilesController : ControllerBase
     {
         private readonly IHostingEnvironment hostingEnvironment_;
@@ -41,7 +44,7 @@ namespace PersonalWeb.Controllers
         {
             hostingEnvironment_ = hostingEnvironment;
             webRootPath = hostingEnvironment_.WebRootPath;
-            filePath = Path.Combine(webRootPath, "StaticFiles");
+            filePath = Path.Combine(webRootPath, "StaticFiles/resume");
         }
         ////----< show files in wwwroot/FileStorage >----------------
         //

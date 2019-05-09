@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Qinyu  Xie PersonalWeb</title>
+    <title>@ViewData["Title"] - Qinyu  Xie Resume</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -17,6 +17,7 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
+    @*<script src="~/js/site.js"></script>*@
 </head>
 
 <body>
@@ -31,6 +32,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+                    <partial name="_LoginPartial" />
+
+
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -39,7 +44,7 @@
                             <a class="nav-link text-dark" href="#section-education">Education</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#section-work">Work Experience</a>
+                            <a class="nav-link text-dark" href="#section-work">Work</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="#section-project">Project</a>
@@ -49,13 +54,16 @@
                             <a class="nav-link text-dark" href="#section-contact">contact</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark">Download CV</a>
-                        </li>
+
+                        @if (User.IsInRole("Admin") | User.IsInRole("User"))
+                {
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="" onclick="getFile()">Download</a>
+                    </li>
+
+}
 
                     </ul>
                 </div>
@@ -79,12 +87,12 @@
         <div class="container">
             <p class="powered-by">
 
-                &copy; 2017 Wei Wang &middot;
+                &copy; Qinyu Xie 
 
-                Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">
+                @*Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">
                     Academic
                     theme
-                </a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+                </a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.*@
 
                 <span class="pull-right" aria-hidden="true">
                     <a href="#" id="back_to_top">

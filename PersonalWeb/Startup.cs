@@ -14,6 +14,8 @@ using PersonalWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 using PersonalWeb.Services;
 
 namespace PersonalWeb
@@ -46,6 +48,8 @@ namespace PersonalWeb
 
             services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultUI(UIFramework.Bootstrap4)
           .AddEntityFrameworkStores<AppDbContext>().AddSignInManager<SignInManager<IdentityUser>>().AddDefaultTokenProviders();
+
+
 
             services.AddSession();
 

@@ -9,5 +9,6 @@ namespace PersonalWeb.Models.ViewModels
         public IEnumerable<Edu> eduDetails { get; set; }
         public IEnumerable<Work> workDetails { get; set; }
         public IEnumerable<Project> projectDetails { get; set; }
+        public IEnumerable<Comment> comments { get; set; }
     }
 }
