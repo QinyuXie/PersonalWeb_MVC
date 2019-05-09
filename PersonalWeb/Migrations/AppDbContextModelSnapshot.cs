@@ -23,8 +23,6 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("Degree");
 
-                    b.Property<int>("FromDay");
-
                     b.Property<int>("FromMonth");
 
                     b.Property<int>("FromYear");
@@ -35,13 +33,9 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("SchoolName");
 
-                    b.Property<int?>("ToDay");
-
                     b.Property<int?>("ToMonth");
 
                     b.Property<int?>("ToYear");
-
-                    b.Property<int>("UserId");
 
                     b.HasKey("EduId");
 
@@ -55,8 +49,6 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("FromDay");
-
                     b.Property<int>("FromMonth");
 
                     b.Property<int>("FromYear");
@@ -67,13 +59,9 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("ProjectName");
 
-                    b.Property<int?>("ToDay");
-
                     b.Property<int?>("ToMonth");
 
                     b.Property<int?>("ToYear");
-
-                    b.Property<int>("UserId");
 
                     b.HasKey("ProjectId");
 
@@ -125,8 +113,6 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("CompanyName");
 
-                    b.Property<int>("FromDay");
-
                     b.Property<int>("FromMonth");
 
                     b.Property<int>("FromYear");
@@ -137,13 +123,9 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("Responsibility");
 
-                    b.Property<int?>("ToDay");
-
                     b.Property<int?>("ToMonth");
 
                     b.Property<int?>("ToYear");
-
-                    b.Property<int>("UserId");
 
                     b.HasKey("WorkId");
 

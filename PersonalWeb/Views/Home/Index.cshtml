@@ -5,17 +5,16 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    input[type='submit'], button, [aria-label] {
+        cursor: pointer;
+    }
 
+    .api-form {
+        display: none;
+    }
+</style>
 <link rel="stylesheet" href="~/css/IndexCSS.css" />
-
-@*<div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    </div>
-
-    <div>
-        <a asp-action="Index">Back to user info page</a>
-    </div>*@
 
 
 <section id="about" class="home-section">
@@ -24,72 +23,25 @@
         <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person">
             <div class="col-left">
                 <div id="profile">
-
-
-                    @*<div class="portrait" itemprop="image"
-                             style="background-image: url('~/~/StaticFiles/por.JPG');">
-                        </div>*@
+                    <div class="portrait">
+                        <img src="/StaticFiles/por.JPG">
+                    </div>
 
 
                     <div class="portrait-title">
                         <h2 itemprop="name">@Model.user.UserFirstName @Model.user.UserLastName</h2>
                         <h3 itemprop="position">Syracuse University Student</h3>
-
-                        @*<h3 itemprop="worksFor">
-                                <a href="https://onevcat.com" target="_blank">
-                                    OneV&#39;s Den (@onevcat)
-                                </a>
-                            </h3>*@
-
                     </div>
-
-                    <ul class="social-icon" aria-hidden="true">
-
-
-                        <li>
-                            <a href="mailto:onev@onevcat.com" target="_blank">
-                                <i class="fa fa-envelope big-icon"></i>
-                            </a>
-                        </li>
-
-
-                        <li>
-                            <a href="//instagram.com/thisalex96" target="_blank">
-                                <i class="fa fa-instagram big-icon"></i>
-                            </a>
-                        </li>
-
-
-                        <li>
-                            <a href="//weibo.com/onevcat" target="_blank">
-                                <i class="fa fa-weibo big-icon"></i>
-                            </a>
-                        </li>
-
-
-                        <li>
-                            <a href="//github.com/onevcat" target="_blank">
-                                <i class="fa fa-github big-icon"></i>
-                            </a>
-                        </li>
-
-                    </ul>
-
                 </div>
             </div>
 
             <div class="col-right" itemprop="description">
 
+                <h1 id="introduction">About me</h1>
 
+                <p>Hi, this is Qinyu Xie. I am a Syracuse University student who major in Computer Engineering now. I have strong knowledge of softeare engineering, object oriented design and internet programming. With these skills, I am going to create some interesting applications and frameworks.</p>
 
-                <h1 id="introduction">Introduction</h1>
-
-                <p>Wei Wang is a professional developer who focuses on iOS now. He has strong knowledge of Swift, Objective-C and network programming. With these skills, he created quite a few widely used applications and frameworks. He also leads the <a href="https://objccn.io" target="_blank">ObjCCN group</a>, which is dedicated to introducing advanced iOS practice and technology to China.</p>
-
-                <p>As a proud father of two amazing kids, Wei Wang also loves traveling, reading and taking photos. He is always willing to try new things, and keeping to learn from them.</p>
-
-                <p>Now, he works for <a href="https://line.me/" target="_blank">LINE Corporation</a> as a senior software engineer.</p>
-
+                <p>As a video logger, I also love traveling, reading and taking photos. I am always willing to try new things, and keeping to learn from them.</p>
 
                 <div class="row">
 
@@ -98,7 +50,7 @@
                         <h3>Job Interests</h3>
                         <ul class="ul-interests">
 
-                            <li>Mobile Development</li>
+                            <li>IOS Development</li>
 
                             <li>Swift Programming</li>
 
@@ -107,32 +59,6 @@
                         </ul>
                     </div>
 
-
-
-                    <div class="col-sm-7">
-                        <h3>Education</h3>
-                        <ul class="ul-edu fa-ul">
-
-                            <li>
-                                <i class="fa-li fa fa-graduation-cap"></i>
-                                <div class="description">
-                                    <p class="course">MSc in Microelectronics Engineering, 2012</p>
-                                    <p class="institution">Tsinghua University, China</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <i class="fa-li fa fa-graduation-cap"></i>
-                                <div class="description">
-                                    <p class="course">BSc in Electrical Engineering, 2009</p>
-                                    <p class="institution">Tsinghua University, China</p>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-
-
                 </div>
             </div>
         </div>
@@ -140,129 +66,234 @@
     </div>
 </section>
 
-@if (Model.eduDetails != null)
-{
-    <section id="education" class="home-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-left" section-heading">
-                    <h1>Education</h1>
-                </div>
 
-                <div class="col-right">
-
-                    @foreach (var education in Model.eduDetails)
-                    {
-                        <tr>
-                            <td>
-                                 <h3 id="school-name">@education.SchoolName</h3>
-                            </td>
-                            <td>
-                                <a asp-action="Edit" >Edit</a> |
-                                <a asp-action="Delete" asp-route-id="@education.EduId">Delete</a>
-                            </td>
-                            <p><span class="dim">@education.Degree @education.Major</span></p>
-
-                            <p><span class="dim">@education.ReleventCourses</span></p>
-                            <td>@education.FromYear</td>
-                            <td>@education.FromMonth</td>
-                            <td>@education.FromDay</td>
-                        </tr>
-                    }
-
-
-                </div>
+<section id="section-education" class="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-left" section-heading">
+                <h1>Education</h1>
             </div>
 
-        </div>
-    </section>
-}
+            <div class="col-right">
+
+                @foreach (var education in Model.eduDetails)
+                {
+                    <tr>
+                        <td>
+                            <h2 id="school-name">@education.SchoolName</h2>
+                        </td>
+
+                        <p><span>@education.Degree in @education.Major</span></p>
 
 
-@if (Model.workDetails != null)
-{
-    <section id="experience" class="home-section">
-        <div class="container">
+                        <td>@education.FromYear</td> /
+                        <td>@education.FromMonth</td> ~
+                        <td>@education.ToYear</td> /
+                        <td>@education.ToMonth</td>
+                        <p><span>@education.ReleventCourses</span></p>
 
-            <div class="row">
-                <div class="col-xs-12 col-md-4 section-heading">
-                    <h1>Professional Experience</h1>
+                        <a id="deleteEduButton" href=""  style="color: #007bff" class="delete" onclick="deleteEduItem(@education.EduId)">Delete</a>
+
+
+                    </tr>
+                }
+
+                <br>
+
+                <div id="add-eduItem" class="api-form">
+                    <h3>Add</h3>
+                    <form  method="POST" class="addEdu-form">
+                        <input type="hidden" id="add-id">
+                        School Name<br>
+                        <input type="text" id="add-schoolName"><br>
+                        Degree<br>
+                        <input type="text" id="add-degree"><br>
+                        Major<br>
+                        <input type="text" id="add-major"><br>
+
+                        From<br>
+                        Year <input type="number" id="add-fromYear">
+                        Month <input type="number" id="add-fromMonth"><br>
+                        To<br>
+                        Year <input type="number" id="add-toYear">
+                        Month <input type="number" id="add-toMonth"><br>
+
+                        Relevant Courses<br>
+                        <input type="text" id="add-courses">
+                        <br>
+
+                        <br><input type="submit" value="Add" onclick="submitEduItem()">
+                        <button onclick="closeAddEduInput()">Cancel</button>
+                    </form>
+                </div>
+                <br>
+
+
+                <div>
+                    <button id="button-add-edu" onclick="addEduItem()">Add Education</button>
                 </div>
 
-                <div class="col-xs-12 col-md-8">
-
-                    @foreach (var work in Model.workDetails)
-                    {
-
-                        <h3 id="school-name">@work.FromMonth @work.FromYear - @work.ToMonth @work.ToYear</h3>
-
-                        <p>@work.Position, @work.Location</p>
-
-                        <ul>
-                            @{
-                                string[] description = (@work.Responsibility).Split(';');
-                            }
-
-                            @foreach (string @des in description)
-                            {
-                                <li>@des</li>
-                            }
-                        </ul>
-
-                    }
-
-                </div>
             </div>
-
         </div>
-    </section>
-}
+
+    </div>
+</section>
 
 
-@if (Model.projectDetails != null)
-{
-    <section id="experience" class="home-section">
-        <div class="container">
 
-            <div class="row">
-                <div class="col-xs-12 col-md-4 section-heading">
-                    <h1>Professional Experience</h1>
-                </div>
 
-                <div class="col-xs-12 col-md-8">
-
-                    @foreach (var work in Model.workDetails)
-                    {
-
-                        <h3 id="school-name">@work.FromMonth @work.FromYear - @work.ToMonth @work.ToYear</h3>
-
-                        <p>@work.Position, @work.Location</p>
-
-                        <ul>
-                            @{
-                                string[] description = (@work.Responsibility).Split(';');
-                            }
-
-                            @foreach (string @des in description)
-                            {
-                                <li>@des</li>
-                            }
-                        </ul>
-
-                    }
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-}
-
-<section id="contact" class="home-section">
+<section id="section-work" class="home-section">
     <div class="container">
 
+        <div class="row">
+            <div class="col-left section-heading">
+                <h1>Work</h1>
+            </div>
+
+            <div class="col-right">
+
+                @foreach (var work in Model.workDetails)
+            {
+            <h2>@work.CompanyName</h2>
+            <h4 >@work.FromMonth @work.FromYear - @work.ToMonth @work.ToYear</h4>
+
+            <p>@work.Position, @work.Location</p>
+
+            <ul>
+                @{
+                string[] res = (@work.Responsibility).Split(';');
+                }
+
+                @foreach (string @des in res)
+                    {
+                    <li>@des</li>
+                    }
+            </ul>
+
+            <a id="deleteWorkButton" href=""  style="color: #007bff" class="delete" onclick="deleteWorkItem(@work.WorkId)">Delete</a>
+
+            <br>
+}
 
 
+                <div id="add-workItem" class="api-form">
+                    <h3>Add</h3>
+                    <form  method="POST" class="addWork-form">
+
+                        Company Name<br>
+                        <input type="text" id="add-wk-companyName"><br>
+                        Position<br>
+                        <input type="text" id="add-wk-position"><br>
+                        Location<br>
+                        <input type="text" id="add-wk-location"><br>
+
+                        From<br>
+                        Year <input type="number" id="add-wk-fromYear">
+                        Month <input type="number" id="add-wk-fromMonth"><br>
+                        To<br>
+                        Year <input type="number" id="add-wk-toYear">
+                        Month <input type="number" id="add-wk-toMonth"><br>
+
+                        Responsibility<br>
+                        <input type="text" id="add-responsibility">
+                        <br>
+
+                        <br><input type="submit" value="Add" onclick="submitWorkItem()">
+                        <button onclick="closeAddWorkInput()">Cancel</button>
+                    </form>
+                </div>
+                <br>
+
+                <div>
+                    <button id="button-add-work" onclick="addWorkItem()">Add Work Experience</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<section id="section-project" class="home-section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-4 section-heading">
+                <h1>Project</h1>
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+
+
+                @foreach (var proj in Model.projectDetails)
+    {
+            <h2>@proj.ProjectName</h2>
+            <h3 id="school-name">@proj.FromMonth @proj.FromYear - @proj.ToMonth @proj.ToYear</h3>
+
+            <p>@proj.Position, @proj.Location</p>
+
+            <ul>
+                @{
+        string[] description = (@proj.Description).Split(';');
+                }
+
+                @foreach (string @des in description)
+    {
+            <li>@des</li>
+}
+            </ul>
+            <a id="deleteProjButton" href="" style="color: #007bff" class="delete" onclick="deleteProjItem(@proj.ProjectId)">Delete</a>
+
+
+}
+                <br>
+
+
+
+                <div id="add-projItem" class="api-form">
+                    <h3>Add</h3>
+                    <form action="javascript:void(0);" method="POST" class="addProj-form">
+                        <input type="hidden" id="add-id">
+                        Project Name<br>
+                        <input type="text" id="add-proj-projName"><br>
+                        Position<br>
+                        <input type="text" id="add-proj-position"><br>
+                        Location<br>
+                        <input type="text" id="add-proj-location"><br>
+
+                        From<br>
+                        Year <input type="number" id="add-proj-fromYear">
+                        Month <input type="number" id="add-proj-fromMonth"><br>
+                        To<br>
+                        Year <input type="number" id="add-proj-toYear">
+                        Month <input type="number" id="add-proj-toMonth"><br>
+
+                        Description<br>
+                        <input type="text" id="add-description">
+                        <br>
+
+                        <br><input type="submit" value="Add" onclick="submitProjItem()">
+                        <button onclick="closeAddProjInput()">Cancel</button>
+                    </form>
+                </div>
+                <br>
+
+                <div>
+                    <button id="button-add-proj" onclick="addProjItem()">Add Project</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="section-contact" class="home-section">
+    <div class="container">
 
 
         <div class="row">

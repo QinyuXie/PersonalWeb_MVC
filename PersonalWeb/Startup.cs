@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using PersonalWeb.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using PersonalWeb.Services;
 
 namespace PersonalWeb
@@ -42,10 +44,14 @@ namespace PersonalWeb
             services.AddDbContext<AppDbContext>
                 (option => option.UseSqlite("Data Source=app.db"));
 
+            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultUI(UIFramework.Bootstrap4)
+          .AddEntityFrameworkStores<AppDbContext>().AddSignInManager<SignInManager<IdentityUser>>().AddDefaultTokenProviders();
+
+            services.AddSession();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //services.AddSingleton<IMessageService, HardcodedMessageService>();
-            services.AddSingleton<IResumeData, MockResumeData>();
+            //services.AddSingleton<IResumeData, MockResumeData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +69,7 @@ namespace PersonalWeb
             }
 
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             //app.UseStaticFiles(new StaticFileOptions()
@@ -72,6 +79,8 @@ namespace PersonalWeb
             //});
 
             app.UseCookiePolicy();
+            app.UseAuthentication();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

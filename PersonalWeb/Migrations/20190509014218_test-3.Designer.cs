@@ -9,8 +9,8 @@ using PersonalWeb.Data;
 namespace PersonalWeb.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190501173026_test")]
-    partial class test
+    [Migration("20190509014218_test-3")]
+    partial class test3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,8 +25,6 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("Degree");
 
-                    b.Property<int>("FromDay");
-
                     b.Property<int>("FromMonth");
 
                     b.Property<int>("FromYear");
@@ -37,13 +35,9 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("SchoolName");
 
-                    b.Property<int?>("ToDay");
-
                     b.Property<int?>("ToMonth");
 
                     b.Property<int?>("ToYear");
-
-                    b.Property<int>("UserId");
 
                     b.HasKey("EduId");
 
@@ -57,8 +51,6 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("FromDay");
-
                     b.Property<int>("FromMonth");
 
                     b.Property<int>("FromYear");
@@ -69,17 +61,51 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("ProjectName");
 
-                    b.Property<int?>("ToDay");
-
                     b.Property<int?>("ToMonth");
 
                     b.Property<int?>("ToYear");
 
-                    b.Property<int>("UserId");
-
                     b.HasKey("ProjectId");
 
                     b.ToTable("projects");
+                });
+
+            modelBuilder.Entity("PersonalWeb.Models.Entities.UserInfo", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address")
+                        .IsRequired();
+
+                    b.Property<int>("Age");
+
+                    b.Property<int>("DayOfBirth");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired();
+
+                    b.Property<string>("Gender");
+
+                    b.Property<string>("Location")
+                        .IsRequired();
+
+                    b.Property<int>("MonthOfBirth");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired();
+
+                    b.Property<string>("UserFirstName")
+                        .IsRequired();
+
+                    b.Property<string>("UserLastName")
+                        .IsRequired();
+
+                    b.Property<int>("YearOfBirth");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("userInfos");
                 });
 
             modelBuilder.Entity("PersonalWeb.Models.Entities.Work", b =>
@@ -88,8 +114,6 @@ namespace PersonalWeb.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CompanyName");
-
-                    b.Property<int>("FromDay");
 
                     b.Property<int>("FromMonth");
 
@@ -101,13 +125,9 @@ namespace PersonalWeb.Migrations
 
                     b.Property<string>("Responsibility");
 
-                    b.Property<int?>("ToDay");
-
                     b.Property<int?>("ToMonth");
 
                     b.Property<int?>("ToYear");
-
-                    b.Property<int>("UserId");
 
                     b.HasKey("WorkId");
 

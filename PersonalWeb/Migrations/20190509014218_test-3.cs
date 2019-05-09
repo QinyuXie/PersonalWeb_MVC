@@ -2,7 +2,7 @@
 
 namespace PersonalWeb.Migrations
 {
-    public partial class test : Migration
+    public partial class test3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,15 +12,12 @@ namespace PersonalWeb.Migrations
                 {
                     EduId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<int>(nullable: false),
                     SchoolName = table.Column<string>(nullable: true),
                     Degree = table.Column<string>(nullable: true),
                     FromYear = table.Column<int>(nullable: false),
                     FromMonth = table.Column<int>(nullable: false),
-                    FromDay = table.Column<int>(nullable: false),
                     ToYear = table.Column<int>(nullable: true),
                     ToMonth = table.Column<int>(nullable: true),
-                    ToDay = table.Column<int>(nullable: true),
                     Major = table.Column<string>(nullable: true),
                     ReleventCourses = table.Column<string>(nullable: true)
                 },
@@ -35,21 +32,41 @@ namespace PersonalWeb.Migrations
                 {
                     ProjectId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<int>(nullable: false),
                     ProjectName = table.Column<string>(nullable: true),
                     Location = table.Column<string>(nullable: true),
                     Position = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     FromYear = table.Column<int>(nullable: false),
                     FromMonth = table.Column<int>(nullable: false),
-                    FromDay = table.Column<int>(nullable: false),
                     ToYear = table.Column<int>(nullable: true),
-                    ToMonth = table.Column<int>(nullable: true),
-                    ToDay = table.Column<int>(nullable: true)
+                    ToMonth = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_projects", x => x.ProjectId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "userInfos",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserFirstName = table.Column<string>(nullable: false),
+                    UserLastName = table.Column<string>(nullable: false),
+                    Age = table.Column<int>(nullable: false),
+                    Gender = table.Column<string>(nullable: true),
+                    YearOfBirth = table.Column<int>(nullable: false),
+                    MonthOfBirth = table.Column<int>(nullable: false),
+                    DayOfBirth = table.Column<int>(nullable: false),
+                    Location = table.Column<string>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
+                    EmailAddress = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_userInfos", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -58,17 +75,14 @@ namespace PersonalWeb.Migrations
                 {
                     WorkId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<int>(nullable: false),
                     CompanyName = table.Column<string>(nullable: true),
                     Location = table.Column<string>(nullable: true),
                     Position = table.Column<string>(nullable: true),
                     Responsibility = table.Column<string>(nullable: true),
                     FromYear = table.Column<int>(nullable: false),
                     FromMonth = table.Column<int>(nullable: false),
-                    FromDay = table.Column<int>(nullable: false),
                     ToYear = table.Column<int>(nullable: true),
-                    ToMonth = table.Column<int>(nullable: true),
-                    ToDay = table.Column<int>(nullable: true)
+                    ToMonth = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,6 +97,9 @@ namespace PersonalWeb.Migrations
 
             migrationBuilder.DropTable(
                 name: "projects");
+
+            migrationBuilder.DropTable(
+                name: "userInfos");
 
             migrationBuilder.DropTable(
                 name: "works");

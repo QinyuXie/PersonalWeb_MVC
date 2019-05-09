@@ -26,6 +26,7 @@ namespace PersonalWeb.Controllers
             model.user = _context.userInfos.Find(1);
             model.eduDetails = _context.edus.ToList();
             model.workDetails = _context.works.ToList();
+            model.projectDetails = _context.projects.ToList();
             return View(model);
         }
 

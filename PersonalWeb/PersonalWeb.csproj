@@ -22,8 +22,7 @@
     <Folder Include="Services\" />
     <Folder Include="Data\" />
     <Folder Include="Views\Info\" />
-    <Folder Include="Migrations\" />
-    <Folder Include="StaticFiles\" />
+    <Folder Include="wwwroot\StaticFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\ResumeView\Index.cshtml" />
@@ -49,5 +48,7 @@
     <Content Remove="wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
     <Content Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
     <Content Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Remove="wwwroot\StaticFiles\por.JPG" />
+    <Content Remove="wwwroot\StaticFiles\portrait.JPG" />
   </ItemGroup>
 </Project>
