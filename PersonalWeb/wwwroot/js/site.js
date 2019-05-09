@@ -214,7 +214,7 @@ function closeAddProjInput() {
 function submitProjItem() {
 
     const item = {
-        ProjectName : $("#add-projName").val(),
+        ProjectName : $("#add-proj-projName").val(),
         Position : $("#add-proj-position").val(),
         Location : $("#add-proj-location").val(),
         FromYear :$("#add-proj-fromYear").val(),
@@ -313,7 +313,7 @@ function submitCommItem() {
 }
 
 ///delete item
-function deleteommCItem(id) {
+function deleteCommItem(id) {
   $.ajax({
     url: comm_url + "/" + id,
     type: "DELETE",

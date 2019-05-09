@@ -25,7 +25,7 @@
             <div class="col-left">
                 <div id="profile">
                     <div class="portrait">
-                        <img src="/StaticFiles/por.JPG">
+                        <img src="/StaticFiles/img/portrait.jpg">
                     </div>
 
 
@@ -102,8 +102,9 @@
                     <td>@education.FromMonth</td> ~
                     <td>@education.ToYear</td> /
                     <td>@education.ToMonth</td>
-                    <p><span>@education.ReleventCourses</span></p>
+                    @*<p><span>@education.ReleventCourses</span></p>*@
 
+                    <br>
                     @if (User.IsInRole("Admin"))
                     {                
                     <a id="deleteEduButton" href="" style="color: #007bff" class="delete" onclick="deleteEduItem(@education.EduId)">Delete</a>
@@ -136,9 +137,9 @@
                         Year <input type="number" id="add-toYear">
                         Month <input type="number" id="add-toMonth"><br>
 
-                        Relevant Courses<br>
+                        @*Relevant Courses<br>
                         <input type="text" id="add-courses">
-                        <br>
+                        <br>*@
 
                         <br><input type="submit" value="Add" onclick="submitEduItem()">
                         <button onclick="closeAddEduInput()">Cancel</button>
@@ -176,7 +177,7 @@
                 @foreach (var work in Model.workDetails)
     {
             <h2>@work.CompanyName</h2>
-            <h4>@work.FromMonth @work.FromYear - @work.ToMonth @work.ToYear</h4>
+            <h4>@work.FromYear / @work.FromMonth ~  @work.ToYear / @work.ToMonth</h4>
 
             <p>@work.Position, @work.Location</p>
 
@@ -259,8 +260,9 @@
 
                 @foreach (var proj in Model.projectDetails)
     {
-            <h2>@proj.ProjectName</h2>
-            <h3 id="school-name">@proj.FromMonth @proj.FromYear - @proj.ToMonth @proj.ToYear</h3>
+            <h2> @proj.ProjectName </h2>
+
+            <h4>@proj.FromYear / @proj.FromMonth  ~  @proj.ToYear / @proj.ToMonth</h4>
 
             <p>@proj.Position, @proj.Location</p>
 
@@ -350,6 +352,7 @@
                 }
             </div>
 
+<br>
 }
 
 
