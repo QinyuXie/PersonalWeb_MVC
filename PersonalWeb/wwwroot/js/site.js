@@ -23,12 +23,13 @@ $(document).ready(function() {
 function getFile() {
   $.ajax({
     type: "GET",
-    url: file_url + "/0",
+    url: "api/files/0",
     cache: false,
-    success: function(data) {
-        files = data;
+    success: function() {
+        alert("Successfully download!")
     }
-  });
+    });
+    return false;
 }
 
 ///////////////////////////////
@@ -88,6 +89,7 @@ function submitEduItem() {
     });
     
     location.reload();
+    return false;
 }
 
 ///delete item
@@ -101,7 +103,7 @@ function deleteEduItem(id) {
     }
     });
 
-
+    return false;
 }
 
 
@@ -161,7 +163,8 @@ function submitWorkItem() {
     location.reload();
     }
     });
- location.reload();
+    location.reload();
+    return false;
 }
 
 ///delete item
@@ -174,7 +177,7 @@ function deleteWorkItem(id) {
         location.reload();
     }
     });
-
+    return false;
 
 }
 
@@ -193,7 +196,8 @@ function getProjData() {
         projs = data;
       
     }
-  });
+    });
+    return false;
 }
 
 //add new work item
@@ -236,7 +240,7 @@ function submitProjItem() {
     });
     
     location.reload();
-  
+  return false;
 }
 
 ///delete item
@@ -249,7 +253,7 @@ function deleteProjItem(id) {
           location.reload();
     }
     });
-
+    return false;
 }
 
 
@@ -267,7 +271,8 @@ function getCommData() {
         comms = data;
      
     }
-  });
+    });
+
 }
 
 //add new comment item
@@ -304,7 +309,7 @@ function submitCommItem() {
     }
     });
     location.reload();
-  
+  return false;
 }
 
 ///delete item
@@ -317,5 +322,5 @@ function deleteommCItem(id) {
            location.reload();
     }
     });
-
+    return false;
 }
